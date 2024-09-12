@@ -1,21 +1,24 @@
 <template>
     <div>
       <div v-if="!isScared" class="normal-page">
-        <h1>Preencha o Formulário</h1>
-        <p>Preencha este formulário tranquilamente e depois clique em Enviar.</p>
+        <h1>Compartilhe Seus Pensamentos</h1>
+        <p>Conte-nos um pouco sobre seus pensamentos ou sentimentos. Após preencher, clique em Enviar.</p>
         <form @submit.prevent="handleSubmit">
           <input type="text" v-model="formData" placeholder="Digite algo..." />
           <button type="submit">Enviar</button>
         </form>
       </div>
   
-      <!-- Jumpscare Section -->
       <div v-if="isScared" class="jumpscare">
         <img src="/scary-image.jpg" alt="Scary face" class="scary-image" />
         <audio ref="scream" autoplay>
           <source src="/scream.mp3" type="audio/mpeg" />
         </audio>
       </div>
+  
+      <footer class="footer">
+        <p>Desenvolvido por <a href="https://github.com/DannielLima" target="_blank" rel="noopener noreferrer">Danniel Lima</a></p>
+      </footer>
     </div>
   </template>
   
@@ -30,10 +33,10 @@
   
       const handleSubmit = () => {
         setTimeout(() => {
-          isScared.value = true; // Ativa o jumpscare
+          isScared.value = true;
           const audioElement = document.querySelector('audio');
-          audioElement?.play();  // Toca o som assustador
-        }, 3000); // Espera 3 segundos para dar o susto
+          audioElement?.play();
+        }, 3000);
       };
   
       return {
@@ -90,5 +93,22 @@
     max-height: 600px;
     object-fit: cover;
   }
-  </style>
   
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  </style>  
