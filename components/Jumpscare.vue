@@ -2,7 +2,7 @@
     <div>
       <div v-if="!isScared" class="normal-page">
         <h1>Compartilhe Seus Pensamentos</h1>
-        <p>Conte-nos um pouco sobre seus pensamentos ou sentimentos. Após preencher, clique em Enviar.</p>
+        <p>Conte-nos um pouco sobre seus pensamentos. Após preencher, clique em Enviar.</p>
         <form @submit.prevent="handleSubmit">
           <input type="text" v-model="formData" placeholder="Digite algo..." />
           <button type="submit">Enviar</button>
@@ -36,6 +36,9 @@
           isScared.value = true;
           const audioElement = document.querySelector('audio');
           audioElement?.play();
+          if (window.navigator.vibrate) {
+            window.navigator.vibrate([200, 100, 200]);
+          }
         }, 3000);
       };
   
@@ -52,12 +55,16 @@
   .normal-page {
     text-align: center;
     padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   input {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
   }
   
   button {
@@ -67,6 +74,8 @@
     color: white;
     border: none;
     cursor: pointer;
+    width: 100%;
+    max-width: 200px;
   }
   
   button:hover {
@@ -110,5 +119,26 @@
   
   .footer a:hover {
     text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .normal-page {
+      padding: 10px;
+    }
+  
+    input {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  
+    .scary-image {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
   </style>  
