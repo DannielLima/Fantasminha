@@ -37,7 +37,7 @@
           const audioElement = document.querySelector('audio');
           audioElement?.play();
           if (window.navigator.vibrate) {
-            window.navigator.vibrate([200, 100, 200]);
+            window.navigator.vibrate([500, 200, 500, 200, 500]);
           }
         }, 3000);
       };
