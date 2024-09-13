@@ -16,12 +16,6 @@ export default defineComponent({
   setup() {
     useHead({
       title: 'Formulário',
-      meta: [
-        { name: 'description', content: 'Um app com pegadinha, tenha cuidado ao usar!' },
-        { name: 'keywords', content: 'jumpscare, susto, pegadinha, Nuxt, Vue, Typescript' },
-        { name: 'author', content: 'Seu Nome' },
-        { name: 'robots', content: 'index, follow' },
-      ]
     });
   }
 });
